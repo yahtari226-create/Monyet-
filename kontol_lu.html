@@ -1,0 +1,451 @@
+8
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maaf ya, Tanti ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #080b19;
+    color: white;
+    overflow-x: hidden;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 45px 45px;
+    opacity: .35;
+    pointer-events: none;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    padding: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.page.active {
+    display: flex;
+    animation: fade .8s ease;
+}
+
+@keyframes fade {
+    from {opacity:0; transform:translateY(15px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+.gift {
+    font-size: 100px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 20px #ff477e);
+}
+
+@keyframes bounce {
+    0%,100% {transform:translateY(0);}
+    50% {transform:translateY(-15px);}
+}
+
+h1 {
+    font-size: 30px;
+    margin: 20px 0;
+    letter-spacing: 2px;
+}
+
+p {
+    color: #c7c5d3;
+    line-height: 1.8;
+}
+
+button {
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    background: #a51f49;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 12px 5px;
+    transition: .3s;
+}
+
+button:hover {
+    background: #e53c70;
+    transform: scale(1.05);
+}
+
+/* AMPLOP */
+.envelope {
+    width: 260px;
+    height: 170px;
+    background: #d5b88d;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 35px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 100px solid #b99769;
+}
+
+.seal {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #9c142e;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 12px #6b1025;
+    font-size: 23px;
+}
+
+/* SURAT */
+.paper {
+    background: #f5eddd;
+    color: #514536;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 35px #0008;
+    text-align: left;
+    line-height: 2;
+    background-image: radial-gradient(#b9a98c 0.5px, transparent 0.5px);
+    background-size: 8px 8px;
+}
+
+.paper h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7b263b;
+}
+
+.paper p {
+    color: #514536;
+    font-size: 15px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 25px;
+    font-style: italic;
+}
+
+/* GALERI */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    width: 100%;
+    max-width: 420px;
+    margin-top: 25px;
+}
+
+.photo {
+    background: #f5eddd;
+    padding: 8px;
+    transform: rotate(-2deg);
+    color: #514536;
+}
+
+.photo:nth-child(even) {
+    transform: rotate(3deg);
+}
+
+.photo img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.photo input {
+    width: 100%;
+    font-size: 10px;
+    color: #333;
+    margin-top: 8px;
+}
+
+.photo span {
+    display: block;
+    padding: 8px 0;
+    font-size: 12px;
+}
+
+/* HUJAN */
+.rain {
+    position: fixed;
+    top: -20px;
+    color: #9bb8ff;
+    animation: fall linear infinite;
+    pointer-events: none;
+    opacity: .5;
+    z-index: 1;
+}
+
+@keyframes fall {
+    to {transform:translateY(110vh);}
+}
+
+.small {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #777b93;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<!-- HALAMAN 1 -->
+<section class="page active" id="home">
+
+    <div class="gift" onclick="next('envelope')">
+        🎁
+    </div>
+
+    <h1>Untuk Tanti</h1>
+
+    <p>
+        Ada sesuatu yang ingin aku sampaikan.<br>
+        Mungkin sederhana, tapi cukup berarti.
+    </p>
+
+    <button onclick="next('envelope')">
+        Buka Hadiah ❤️
+    </button>
+
+    <div class="small">A LITTLE GIFT FOR YOU</div>
+
+</section>
+
+<!-- HALAMAN 2 -->
+<section class="page" id="envelope">
+
+    <h1>Untukmu, Tanti.</h1>
+
+    <p>
+        Ada sepucuk surat yang ingin kamu baca.
+    </p>
+
+    <div class="envelope" onclick="next('letter')">
+        <div class="seal">❤</div>
+    </div>
+
+    <p>Klik amplop untuk membuka surat</p>
+
+    <button onclick="next('home')">Kembali</button>
+
+</section>
+
+<!-- HALAMAN 3 -->
+<section class="page" id="letter">
+
+    <div class="paper">
+
+        <h2>Untuk Tanti</h2>
+
+        <p>
+            Tanti,
+            <br><br>
+            Aku tahu mungkin ada perkataan atau
+            perbuatanku yang membuat kamu kecewa.
+            Aku tidak bermaksud membuat semuanya
+            menjadi seperti ini.
+            <br><br>
+            Aku sadar bahwa terkadang aku terlalu
+            egois dan tidak memikirkan perasaanmu.
+            Maaf karena belum bisa menjadi seseorang
+            yang selalu mengerti kamu.
+            <br><br>
+            Aku tidak meminta kamu untuk langsung
+            melupakan semuanya. Aku hanya ingin
+            kamu tahu bahwa aku benar-benar
+            menyesali kesalahanku.
+            <br><br>
+            Terima kasih sudah pernah menjadi
+            bagian dari cerita hidupku.
+        </p>
+
+        <div class="signature">
+            Dengan tulus,<br>
+            — Aku ❤️
+        </div>
+
+        <h2 style="margin-top:30px">
+            Maafin aku?
+        </h2>
+
+        <div style="text-align:center">
+            <button onclick="next('yes')">Iya ❤️</button>
+            <button onclick="next('no')">Belum...</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HALAMAN 4 -->
+<section class="page" id="yes">
+
+    <div style="font-size:80px">❤️</div>
+
+    <h1>Terima kasih, Tanti.</h1>
+
+    <p>
+        Aku sangat menghargai kesempatan ini.
+        <br>
+        Semoga kita bisa menjadi lebih baik.
+    </p>
+
+    <button onclick="next('memories')">
+        Lihat Kenangan
+    </button>
+
+</section>
+
+<!-- HALAMAN 5 -->
+<section class="page" id="no">
+
+    <div style="font-size:75px">🥺</div>
+
+    <h1>Tidak apa-apa.</h1>
+
+    <p>
+        Aku mengerti kalau kamu masih butuh waktu.
+        <br>
+        Aku tidak akan memaksamu.
+    </p>
+
+    <button onclick="next('letter')">
+        Kembali ke Surat
+    </button>
+
+</section>
+
+<!-- HALAMAN 6 -->
+<section class="page" id="memories">
+
+    <h1>Our Memories</h1>
+
+    <p>
+        Beberapa kenangan yang tidak ingin aku lupakan.
+    </p>
+
+    <div class="gallery">
+
+        <div class="photo">
+            <img id="img1" src="https://placehold.co/300x300/e9dfd0/77604d?text=Foto+1">
+            <input type="file" accept="image/*" onchange="upload(this,'img1')">
+            <span>Our Memory ♡</span>
+        </div>
+
+        <div class="photo">
+            <img id="img2" src="https://placehold.co/300x300/e9dfd0/77604d?text=Foto+2">
+            <input type="file" accept="image/*" onchange="upload(this,'img2')">
+            <span>Beautiful Day ♡</span>
+        </div>
+
+        <div class="photo">
+            <img id="img3" src="https://placehold.co/300x300/e9dfd0/77604d?text=Foto+3">
+            <input type="file" accept="image/*" onchange="upload(this,'img3')">
+            <span>Sweet Memories ♡</span>
+        </div>
+
+        <div class="photo">
+            <img id="img4" src="https://placehold.co/300x300/e9dfd0/77604d?text=Foto+4">
+            <input type="file" accept="image/*" onchange="upload(this,'img4')">
+            <span>Forever Remember ♡</span>
+        </div>
+
+    </div>
+
+    <button onclick="next('home')">Kembali ke Awal</button>
+
+</section>
+
+<script>
+
+// PINDAH HALAMAN
+function next(id) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    window.scrollTo(0,0);
+}
+
+// UPLOAD FOTO DARI GALERI HP
+function upload(input, id) {
+
+    if (input.files && input.files[0]) {
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+            document.getElementById(id).src = e.target.result;
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+// ANIMASI HUJAN
+for (let i = 0; i < 35; i++) {
+
+    let rain = document.createElement('div');
+
+    rain.className = 'rain';
+    rain.innerHTML = '│';
+
+    rain.style.left = Math.random() * 100 + 'vw';
+    rain.style.animationDuration =
+        (2 + Math.random() * 4) + 's';
+
+    rain.style.animationDelay =
+        Math.random() * 5 + 's';
+
+    rain.style.fontSize =
+        (10 + Math.random() * 12) + 'px';
+
+    document.body.appendChild(rain);
+}
+
+</script>
+
+</body>
+</html>
