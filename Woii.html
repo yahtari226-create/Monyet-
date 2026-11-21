@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terima Kasih, Tanti ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, serif;
+    background: #080b19;
+    color: white;
+    overflow-x: hidden;
+}
+
+#stars {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 45px 45px;
+    opacity: .35;
+    pointer-events: none;
+}
+
+.page {
+    display: none;
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    padding: 25px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.page.active {
+    display: flex;
+    animation: fade .8s ease;
+}
+
+@keyframes fade {
+    from {opacity:0; transform:translateY(15px);}
+    to {opacity:1; transform:translateY(0);}
+}
+
+.gift {
+    font-size: 100px;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+    filter: drop-shadow(0 0 20px #ff477e);
+}
+
+@keyframes bounce {
+    0%,100% {transform:translateY(0);}
+    50% {transform:translateY(-15px);}
+}
+
+h1 {
+    font-size: 30px;
+    margin: 20px 0;
+    letter-spacing: 2px;
+}
+
+p {
+    color: #c7c5d3;
+    line-height: 1.8;
+}
+
+button {
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    background: #a51f49;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 12px 5px;
+    transition: .3s;
+}
+
+button:hover {
+    background: #e53c70;
+    transform: scale(1.05);
+}
+
+.envelope {
+    width: 260px;
+    height: 170px;
+    background: #d5b88d;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 35px #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+}
+
+.envelope::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    border-left: 130px solid transparent;
+    border-right: 130px solid transparent;
+    border-top: 100px solid #b99769;
+}
+
+.seal {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #9c142e;
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 0 12px #6b1025;
+    font-size: 23px;
+}
+
+.paper {
+    background: #f5eddd;
+    color: #514536;
+    width: 100%;
+    max-width: 420px;
+    padding: 30px 25px;
+    border-radius: 5px;
+    box-shadow: 0 0 35px #0008;
+    text-align: left;
+    line-height: 2;
+    background-image: radial-gradient(#b9a98c 0.5px, transparent 0.5px);
+    background-size: 8px 8px;
+}
+
+.paper h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #7b263b;
+}
+
+.paper p {
+    color: #514536;
+    font-size: 15px;
+}
+
+.signature {
+    text-align: right;
+    margin-top: 25px;
+    font-style: italic;
+}
+
+.rain {
+    position: fixed;
+    top: -20px;
+    color: #9bb8ff;
+    animation: fall linear infinite;
+    pointer-events: none;
+    opacity: .5;
+    z-index: 1;
+}
+
+@keyframes fall {
+    to {transform:translateY(110vh);}
+}
+
+.small {
+    font-size: 12px;
+    margin-top: 20px;
+    color: #777b93;
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<!-- HALAMAN 1 -->
+<section class="page active" id="home">
+
+    <div class="gift" onclick="next('envelope')">
+        🎁
+    </div>
+
+    <h1>Untuk Tanti ❤️</h1>
+
+    <p>
+        Ada sesuatu yang ingin aku sampaikan.<br>
+        Sesuatu yang mungkin sederhana,<br>
+        tetapi datang dari hati.
+    </p>
+
+    <button onclick="next('envelope')">
+        Buka Hadiah ❤️
+    </button>
+
+    <div class="small">A LITTLE GIFT FOR YOU</div>
+
+</section>
+
+<!-- HALAMAN 2 -->
+<section class="page" id="envelope">
+
+    <h1>Untukmu, Tanti.</h1>
+
+    <p>
+        Ada sepucuk surat kecil<br>
+        yang ingin aku berikan untukmu.
+    </p>
+
+    <div class="envelope" onclick="next('letter')">
+        <div class="seal">❤</div>
+    </div>
+
+    <p>Klik amplop untuk membaca surat</p>
+
+    <button onclick="next('home')">Kembali</button>
+
+</section>
+
+<!-- HALAMAN 3 -->
+<section class="page" id="letter">
+
+    <div class="paper">
+
+        <h2>Untuk Tanti ❤️</h2>
+
+        <p>
+            Tanti,
+            <br><br>
+            Aku cuma ingin mengucapkan terima kasih
+            karena sudah hadir dan menjadi bagian
+            dari cerita hidupku.
+            <br><br>
+            Terima kasih untuk setiap waktu yang
+            pernah kita lewati, setiap cerita,
+            tawa, perhatian, dan hal-hal sederhana
+            yang mungkin terlihat biasa,
+            tetapi punya arti tersendiri bagiku.
+            <br><br>
+            Mungkin aku tidak selalu bisa
+            mengungkapkan semuanya dengan kata-kata,
+            tetapi aku benar-benar menghargai
+            setiap hal baik yang pernah kamu berikan.
+            <br><br>
+            Apa pun yang terjadi nanti,
+            aku harap kamu selalu bahagia,
+            dikelilingi hal-hal baik,
+            dan jangan pernah berhenti tersenyum.
+            <br><br>
+            Sekali lagi, terima kasih sudah
+            menjadi bagian dari cerita ini.
+        </p>
+
+        <div class="signature">
+            Dengan tulus,<br>
+            — Aku ❤️
+        </div>
+
+        <h2 style="margin-top:30px">
+            Terima kasih sudah ada.
+        </h2>
+
+        <div style="text-align:center">
+            <button onclick="next('yes')">❤️</button>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- HALAMAN 4 -->
+<section class="page" id="yes">
+
+    <div style="font-size:80px">💗</div>
+
+    <h1>Untuk Tanti.</h1>
+
+    <p>
+        Jangan lupa bahagia, ya.
+        <br>
+        Semoga hal-hal baik selalu datang
+        dalam hidupmu.
+        <br><br>
+        Terima kasih untuk semuanya. ❤️
+    </p>
+
+    <button onclick="next('home')">
+        Kembali ke Awal
+    </button>
+
+</section>
+
+<script>
+
+// PINDAH HALAMAN
+function next(id) {
+
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    window.scrollTo(0,0);
+}
+
+// ANIMASI HUJAN
+for (let i = 0; i < 35; i++) {
+
+    let rain = document.createElement('div');
+
+    rain.className = 'rain';
+    rain.innerHTML = '│';
+
+    rain.style.left = Math.random() * 100 + 'vw';
+
+    rain.style.animationDuration =
+        (2 + Math.random() * 4) + 's';
+
+    rain.style.animationDelay =
+        Math.random() * 5 + 's';
+
+    rain.style.fontSize =
+        (10 + Math.random() * 12) + 'px';
+
+    document.body.appendChild(rain);
+}
+
+</script>
+
+</body>
+</html>
